@@ -2,11 +2,11 @@
   <div class="c-holding-creator">
     <form @submit.prevent="addHolding">
       <label>
-        Holding Code
+        Crypto Code:
         <input type="text" v-model="code">
       </label>
       <label>
-        Holding Value
+        Crypto Value:
         <input type="number" v-model="value">
       </label>
       <input
