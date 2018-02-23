@@ -1,18 +1,20 @@
 <template>
   <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HoldingCreator/>
+    <HoldingList/>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import HoldingCreator from '@/components/HoldingCreator.vue';
+import HoldingList from '@/components/HoldingList.vue';
 
 export default Vue.extend({
   name: 'home',
   components: {
-    HelloWorld,
+    HoldingCreator,
+    HoldingList,
   },
 });
 </script>
