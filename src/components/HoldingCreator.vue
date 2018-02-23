@@ -27,17 +27,19 @@ export default Vue.extend({
   data() {
     return {
       code: '',
-      value: '0',
+      value: '1',
+      defaultValue: '1'
     };
   },
   methods: {
     addHolding() {
+      const holdingCode = this.code.toUpperCase().replace(/[^A-Z]/g, '');
       this.$store.dispatch('addHolding', {
-        code: this.code,
+        code: holdingCode,
         value: parseInt(this.value, 10),
       });
       this.code = '';
-      this.value = '0';
+      this.value = this.defaultValue;
     },
   },
 });
