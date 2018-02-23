@@ -1,9 +1,9 @@
 <template>
     <div class="c-holdings">
-        <BaseHolding
+        <Holding
           v-for="(holding, index) in holdings"
           :key="index"
-          :code="holding.code"
+          :name="holding.name"
           :value="holding.value"
         />
     </div>
@@ -13,12 +13,12 @@
 import Vue from 'vue';
 import { IHolding } from '@/types';
 
-import BaseHolding from '@/components/BaseHolding.vue';
+import Holding from '@/components/Holding.vue';
 
 export default Vue.extend({
     name: 'HoldingList',
     components: {
-      BaseHolding
+      Holding
     },
     computed: {
       holdings() : Array<IHolding> {

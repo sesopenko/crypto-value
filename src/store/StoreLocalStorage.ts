@@ -3,9 +3,12 @@ export default (store: any) => {
   if (holdingsJson != null) {
     try {
       const holdings = JSON.parse(holdingsJson);
-      store.commit('setHoldings', holdings);
+      window.setTimeout(() => {
+        store.commit('setAllHoldings', holdings);
+      }, 100);
+    
     } catch (e) {
-      // Nothing to do, leave it be.
+      // We'll sanitize this on the next save.
     }
   }
   store.subscribe((mutation: any, state: any) => {

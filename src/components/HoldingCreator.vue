@@ -2,8 +2,8 @@
   <div class="c-holding-creator">
     <form @submit.prevent="addHolding">
       <label>
-        Crypto Code:
-        <input type="text" v-model="code">
+        Crypto Name:
+        <input type="text" v-model="name">
       </label>
       <label>
         Crypto Value:
@@ -26,19 +26,19 @@ export default Vue.extend({
   name: 'HoldingCreator',
   data() {
     return {
-      code: '',
+      name: '',
       value: '1',
       defaultValue: '1'
     };
   },
   methods: {
     addHolding() {
-      const holdingCode = this.code.toUpperCase().replace(/[^A-Z]/g, '');
+      const holdingName = this.name.toUpperCase().replace(/[^A-Z]/g, '');
       this.$store.dispatch('addHolding', {
-        code: holdingCode,
-        value: parseInt(this.value, 10),
+        name: holdingName,
+        value: parseFloat(this.value),
       });
-      this.code = '';
+      this.name = '';
       this.value = this.defaultValue;
     },
   },

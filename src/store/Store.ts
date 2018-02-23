@@ -4,45 +4,52 @@ import Vuex from 'vuex';
 import { remove, findIndex } from 'lodash';
 
 
-import { IHolding, IStoreState } from '@/types';
+import { IHolding, IStoreState, ITicker } from '@/types';
 
 import StoreLocalStorage from '@/store/StoreLocalStorage';
+import StoreTickerFetcher from '@/store/StoreTickerFetcher';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   plugins: [
-    StoreLocalStorage
+    StoreLocalStorage,
+    StoreTickerFetcher
   ],
   state: {
     holdings: [],
+    tickers: []
   },
   mutations: {
     setHolding(state: IStoreState, holding: IHolding) {
       const isZeroValue = (holding.value === 0);
       if (isZeroValue) {
-        console.log('is zero');
         const holdingIndex = findIndex(state.holdings, (comparison: IHolding) => {
-          return comparison.code === holding.code;
+          return comparison.name === holding.name;
         })
         if (holdingIndex !== -1) {
           state.holdings.splice(holdingIndex, 1);
         }
       } else {
-        const existingIndex = findIndex(state.holdings, ['code', holding.code]);
-        console.log('existingIndex:', existingIndex);
+        const existingIndex = findIndex(state.holdings, ['name', holding.name]);
         if (existingIndex === -1) {
-          console.log('pushing');
           state.holdings.push(holding);
         } else {
-          console.log('altering');
           state.holdings[existingIndex].value = holding.value;
         }
       }
     },
-    setHoldings(state: IStoreState, holdings: Array<IHolding>) {
+    setAllHoldings(state: IStoreState, holdings: Array<IHolding>) {
       state.holdings = holdings;
-    }
+    },
+    setTicker(state: IStoreState, ticker: ITicker) {
+      const existingIndex = findIndex(state.tickers, ['name', ticker.name]);
+        if (existingIndex === -1) {
+          state.tickers.push(ticker);
+        } else {
+          state.tickers.splice(existingIndex, 1, ticker);
+        }
+    },
   },
   actions: {
     addHolding({ commit }, holding: IHolding) {

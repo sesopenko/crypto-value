@@ -20,14 +20,14 @@ describe('HelloWorld.vue', () => {
   
 
   it('renders props.msg when passed', () => {
-    const expectedCode = 'BTC';
+    const expectedName = 'bitcoin';
     const expectedValue = 2.457;
     const wrapper = shallow(HoldingCreator, {
       store,
       localVue
     });
     wrapper.setData({
-        code: expectedCode,
+        code: expectedName,
         value: expectedValue.toString()
     })
     wrapper.find('[data-test-add]').trigger('click');

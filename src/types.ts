@@ -1,8 +1,16 @@
 export interface IHolding {
-    code: string;
-    value: number;
-  }
+  name: string;
+  value: number;
+}
+
+export interface ITicker {
+  name: string,
+  symbol: string,
+  priceBtc: number,
+  priceUsd: number
+}
 
 export interface IStoreState {
-    holdings: IHolding[];
+    holdings: Array<IHolding>;
+    tickers: Array<ITicker>;
 }
