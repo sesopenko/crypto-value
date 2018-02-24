@@ -7,11 +7,13 @@ script:
 - yarn build
 deploy:
   provider: s3
+  skip_cleanup: true
   access_key_id: AKIAIZPUTT2QS2CAQW3Q
   secret_access_key:
     secure: FOrO97uR2b44XM6TF8zhT3u7/IQFP6CzRwy5VDnFlaRt84uQ5ezwuKwxHcaL79FaqXNFU/dmwxAu9gAHQEkDf/+Po8L2/jM1H9bLqo+CUXMp++EUlQwV3qcxpjQqikovuaf1o1rODN8srqr3ioJ4Qu0wYvWy1klFDZP0JNiAWeAptUW8HLwarvIrMX9HuBrM6IL4ERU5Ux9R95J9PL2cEp885g33MaIo+FwTzXLp+QyzgKDb1oZQo70OEs0ConkFDT0H0f2kUpVIE6iDhjBSDQlwLi3xhX/lojryljbCp/1hvbXLujxEM2sQFDsNKAFN1GLIxRtZsInbXoNLQzuJ/s0a7HQiyOgTud9wLj6upKLEPA0eewDGPs9YmYnlmUqMMUzf/92oFkiVVAHTEYWW/F6jX/kvQj2Y+iStMCocHsoX36KXApqQqpZ8Ex4/1p+wWHg/UvxnAFs1MTUhqXsEAMSfRr7+EedNycAsdbkvu7k6UdDNPnaOek1i6eyGgXNsG/PbRSh3WjAscPxdAgWRL0dvSu1HYT2T3TZ+cYhW9kW9w2pjf8Umm8sla4F7WQ4K9j8tkiDEyfh1Ir1y0+6ioChmx1NA0FE5R1DxM3EpKbF8e5wBeWJeOo8tjdLuqZfIDnU/HauMPOxF1j9p5whVeTzac5KiIY5sCfWdhZnWPiM=
   bucket: crypto-value
   local-dir: dist
-  acl: ''
+  acl: 'public_read'
   on:
+    branch: master
     repo: sesopenko/crypto-value
