@@ -12,7 +12,7 @@ export default (store: any) => {
       const missingTickerNames = difference(holdingNames, existingTickerNames);
       missingTickerNames.forEach((tickerName) => {
         const coinMarketCapUrl = `https://api.coinmarketcap.com/v1/ticker/${tickerName}/`;
-        const corsProxyUrl = `https://cors-anywhere.herokuapp.com/${coinMarketCapUrl}`
+        const corsProxyUrl = `https://cors-anywhere.herokuapp.com/${coinMarketCapUrl}`;
         fetch(coinMarketCapUrl).then((response) => {
           response.json().then((data) => {
             const tickerData = data[0];
@@ -20,15 +20,15 @@ export default (store: any) => {
               name: tickerName,
               symbol: tickerData.symbol,
               priceBtc: parseFloat(tickerData.price_btc),
-              priceUsd: parseFloat(tickerData.price_usd)
+              priceUsd: parseFloat(tickerData.price_usd),
             };
             store.commit('setTicker', ticker);
           });
-        }).catch(err => {
+        }).catch((err) => {
           // Just be silent
         });
       });
       break;
     }
   });
-}
+};

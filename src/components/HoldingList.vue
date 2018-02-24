@@ -18,13 +18,13 @@ import Holding from '@/components/Holding.vue';
 export default Vue.extend({
     name: 'HoldingList',
     components: {
-      Holding
+      Holding,
     },
     computed: {
-      holdings() : Array<IHolding> {
+      holdings(): IHolding[] {
         return this.$store.state.holdings;
-      }
-    }
+      },
+    },
 });
 </script>
 

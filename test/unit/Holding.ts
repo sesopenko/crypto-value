@@ -10,8 +10,8 @@ describe('Holding.vue', () => {
     const wrapper = shallow(Holding, {
       propsData: {
         name: expectedName,
-        value: expectedValue
-      }
+        value: expectedValue,
+      },
     });
     expect(wrapper.find('[data-test-holding-name]').text()).toContain(expectedName);
     expect(wrapper.find('[data-test-holding-value]').text()).toContain('2.457');

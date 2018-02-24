@@ -4,13 +4,13 @@ export interface IHolding {
 }
 
 export interface ITicker {
-  name: string,
-  symbol: string,
-  priceBtc: number,
-  priceUsd: number
+  name: string;
+  symbol: string;
+  priceBtc: number;
+  priceUsd: number;
 }
 
 export interface IStoreState {
-    holdings: Array<IHolding>;
-    tickers: Array<ITicker>;
+    holdings: IHolding[];
+    tickers: ITicker[];
 }

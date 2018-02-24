@@ -22,12 +22,12 @@ export default Vue.extend({
     props: {
       name: {
         type: String,
-        required: true
+        required: true,
       },
       value: {
         type: Number,
-        required: true
-      }
+        required: true,
+      },
     },
     computed: {
       ticker(): ITicker|null {
@@ -41,13 +41,13 @@ export default Vue.extend({
           const usdValue = this.ticker.priceUsd * this.value;
           return usdValue.toLocaleString('en', {
             style: 'currency',
-            currency: 'USD'
-          })
+            currency: 'USD',
+          });
         } else {
           return null;
         }
-      }
-    }
+      },
+    },
 });
 </script>
 

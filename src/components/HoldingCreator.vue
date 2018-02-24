@@ -28,7 +28,7 @@ export default Vue.extend({
     return {
       name: '',
       value: '1',
-      defaultValue: '1'
+      defaultValue: '1',
     };
   },
   methods: {

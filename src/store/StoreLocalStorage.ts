@@ -6,7 +6,7 @@ export default (store: any) => {
       window.setTimeout(() => {
         store.commit('setAllHoldings', holdings);
       }, 100);
-    
+
     } catch (e) {
       // We'll sanitize this on the next save.
     }
@@ -18,4 +18,4 @@ export default (store: any) => {
       break;
     }
   });
-}
+};

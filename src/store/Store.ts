@@ -14,11 +14,11 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   plugins: [
     StoreLocalStorage,
-    StoreTickerFetcher
+    StoreTickerFetcher,
   ],
   state: {
     holdings: [],
-    tickers: []
+    tickers: [],
   },
   mutations: {
     setHolding(state: IStoreState, holding: IHolding) {
@@ -26,7 +26,7 @@ export default new Vuex.Store({
       if (isZeroValue) {
         const holdingIndex = findIndex(state.holdings, (comparison: IHolding) => {
           return comparison.name === holding.name;
-        })
+        });
         if (holdingIndex !== -1) {
           state.holdings.splice(holdingIndex, 1);
         }
@@ -39,12 +39,12 @@ export default new Vuex.Store({
         }
       }
     },
-    setAllHoldings(state: IStoreState, holdings: Array<IHolding>) {
+    setAllHoldings(state: IStoreState, holdings: IHolding[]) {
       state.holdings = holdings;
     },
     setTicker(state: IStoreState, ticker: ITicker) {
       const existingIndex = findIndex(state.tickers, ['name', ticker.name]);
-        if (existingIndex === -1) {
+      if (existingIndex === -1) {
           state.tickers.push(ticker);
         } else {
           state.tickers.splice(existingIndex, 1, ticker);
@@ -54,6 +54,6 @@ export default new Vuex.Store({
   actions: {
     addHolding({ commit }, holding: IHolding) {
       commit('setHolding', holding);
-    }
+    },
   },
 });
